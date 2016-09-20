@@ -64,11 +64,11 @@
     <script>
       function updateSeeds() {
       var network = document.getElementById("networks").value;
-      var $select = $('#seeds');
-      $select.empty();
+      var $select2 = $('#seeds');
+      $select2.empty();
       $.getJSON("data/seed_networks.json",function(data){
       $.each(data,function(i,val){
-      $select.append($('<option />', { value: i ["shortname"], text: i }))})});
+      $select2.append($('<option />', { value: i ["shortname"], text: i }))})});
       }
     </script>
 
