@@ -39,14 +39,12 @@
 	<h2>Network Selector</h2>
 	<p>Choose a seed to assess reliability. You can filter the list of seeds by using the Network Selector below. </p>
 	<div>
-	  <select name="networks" id="networks">
+	  <select name="networks" id="networks" onchange="updateSeeds()">
 	  </select>
 	</div>
 	
 	<div>
 	  <select name="seeds" id="seeds">
-	    <option value="ROI 1">roi 1</option>
-	    <option value="ROI 2">roi 2</option>
 	  </select>
 	</div>
 
@@ -63,10 +61,28 @@
 
     <script type="text/javascript" src="src/xtk.js"></script>
 
+    <script>
+      function updateSeeds() {
+      var network = document.getElementById("networks").value;
+      var $select = $('#seeds');
+      $select.empty();
+      $.getJSON("data/networks.json",function(data){
+      $.each(data,function(i,val){
+      $select.append($('<option />', { value: val["shortname"], text: val["name"] }))})});
+      }
+    </script>
+
 
     <script>
       var $select = $('#networks');
       $.getJSON("data/networks.json",function(data){
+      $.each(data,function(i,val){
+      $select.append($('<option />', { value: val["shortname"], text: val["name"] }))})});
+    </script>
+
+    <script>
+      var $select = $('#seeds');
+      $.getJSON("data/seeds.json",function(data){
       $.each(data,function(i,val){
       $select.append($('<option />', { value: val["shortname"], text: val["name"] }))})});
     </script>
