@@ -68,7 +68,7 @@
       $select.empty();
       $.getJSON("data/networks.json",function(data){
       $.each(data,function(i,val){
-      $select.append($('<option />', { value: val["shortname"], text: val["name"] }))})});
+      $select.append($('<option />', { value: i ["shortname"], text: i }))})});
       }
     </script>
 
